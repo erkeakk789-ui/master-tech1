@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MASTER TECH — ремонт и установка кондиционеров, чиллеров, котлов и бытовой техники. Бесплатная диагностика и выезд мастера. Гарантия 1 год.">
+  <title>MASTER TECH — Ремонт и установка техники</title>
+  <style>
+    :root{
+      --bg:#0b0d0c; --panel:#121614; --panel2:#171c19; --text:#f4f7f3;
+      --muted:#a9b2ad; --accent:#b7ff38; --accent2:#d7ff8d; --line:#28302b;
+      --white:#fff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(11,13,12,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{font-weight:900;font-size:22px;letter-spacing:-1px}
+    .logo span{color:var(--accent)}
+    .navlinks{display:flex;gap:24px;color:#c9d0cc;font-size:14px}
+    .navlinks a:hover{color:var(--accent)}
+    .actions{display:flex;align-items:center;gap:8px}
+    .lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+    .lang button{border:0;background:transparent;color:var(--muted);padding:7px 9px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:800}
+    .lang button.active{background:var(--accent);color:#0b0d0c}
+    .call{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);padding:11px 15px;border-radius:12px;font-weight:800;font-size:13px}
+    .hero{padding:95px 0 75px;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 20%,rgba(183,255,56,.14),transparent 30%),linear-gradient(120deg,#090b0a 0%,#101612 65%,#162018 100%)}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,7,.95),rgba(5,8,7,.7));pointer-events:none}.hero:after{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:var(--accent);filter:blur(140px);opacity:.09;right:-150px;top:-120px}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:55px;align-items:center;position:relative;z-index:2}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #39432e;background:#161c12;color:var(--accent);padding:8px 12px;border-radius:999px;font-weight:800;font-size:12px;margin-bottom:22px}
+    h1{font-size:clamp(45px,6vw,78px);line-height:.98;letter-spacing:-4px;max-width:780px}
+    h1 em{font-style:normal;color:var(--accent)}
+    .hero p{color:var(--muted);font-size:18px;max-width:650px;margin:25px 0}
+    .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 20px;border-radius:14px;font-weight:900;border:1px solid transparent;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#0b0d0c}
+    .btn-primary:hover{background:#c9ff68}
+    .btn-secondary{background:var(--panel);border-color:var(--line)}
+    .free-box{background:linear-gradient(145deg,#171d16,#101310);border:1px solid #3a4731;border-radius:26px;padding:30px;position:relative}
+    .free-box .tag{font-size:11px;color:var(--accent);font-weight:900;letter-spacing:1.2px}
+    .free-box h2{font-size:38px;line-height:1.05;margin:10px 0}
+    .free-box p{font-size:15px;margin:0 0 20px}
+    .mini{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .mini div{background:#0d100e;border:1px solid var(--line);padding:13px;border-radius:13px}
+    .mini b{display:block;color:var(--accent);font-size:20px}.mini span{font-size:11px;color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .stat{padding:25px 15px;border-right:1px solid var(--line);text-align:center}.stat:last-child{border:0}
+    .stat b{font-size:28px;color:var(--accent);display:block}.stat span{font-size:12px;color:var(--muted)}
+    section{padding:88px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:35px}
+    .section-head h2{font-size:clamp(32px,4vw,52px);letter-spacing:-2px;line-height:1}
+    .section-head p{color:var(--muted);max-width:500px}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .service{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:25px;min-height:205px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}
+    .service:hover{transform:translateY(-4px);border-color:#4c5b43}
+    .icon{font-size:30px}.service h3{font-size:20px;margin:12px 0 6px}.service p{color:var(--muted);font-size:13px}
+    .service a{color:var(--accent);font-weight:900;font-size:13px;margin-top:15px}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+    .num{color:var(--accent);font-size:13px;font-weight:900}.step h3{margin:13px 0 7px}.step p{color:var(--muted);font-size:13px}
+    .problems{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .problem{padding:24px;border:1px solid var(--line);background:var(--panel);border-radius:18px}
+    .problem h3{margin-bottom:10px}.problem ul{list-style:none;color:var(--muted);font-size:14px}.problem li{padding:5px 0}.problem li:before{content:"✓";color:var(--accent);font-weight:900;margin-right:8px}
+    .review-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:18px}
+    .review-form,.reviews{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:25px}
+    input,textarea{width:100%;background:#0d100e;border:1px solid var(--line);color:var(--text);padding:13px;border-radius:12px;margin:6px 0 12px;outline:none}
+    textarea{min-height:110px;resize:vertical}
+    .reviews{display:grid;gap:12px;max-height:430px;overflow:auto}
+    .review{border-bottom:1px solid var(--line);padding-bottom:15px}.review:last-child{border:0}.stars{color:var(--accent);letter-spacing:2px}.review small{color:var(--muted)}
+    .cta{background:var(--accent);color:#0b0d0c;border-radius:28px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:25px}
+    .cta h2{font-size:clamp(30px,4vw,50px);letter-spacing:-2px;line-height:1}
+    .cta p{margin-top:10px;opacity:.75}
+    .cta .btn{background:#0b0d0c;color:var(--white)}
+    footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line)}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .mobile-bar{display:none}
+    @media(max-width:900px){
+      .navlinks{display:none}.hero-grid,.review-wrap{grid-template-columns:1fr}.services{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    }
+    @media(max-width:600px){
+      nav{height:66px}.call{display:none}.hero{padding:55px 0 45px}h1{letter-spacing:-2.5px}.hero p{font-size:16px}.services,.steps,.problems{grid-template-columns:1fr}.stats{margin-bottom:0}.section-head{display:block}.section-head p{margin-top:14px}.cta{padding:30px;display:block}.cta .btn{margin-top:20px;width:100%}.mobile-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;bottom:0;left:0;right:0;z-index:60;padding:8px;background:rgba(11,13,12,.95);backdrop-filter:blur(12px);gap:8px;border-top:1px solid var(--line)}.mobile-bar a{padding:13px;text-align:center;border-radius:12px;font-weight:900}.mobile-bar a:first-child{background:var(--accent);color:#0b0d0c}.mobile-bar a:last-child{border:1px solid var(--line)}body{padding-bottom:70px}}
+  
+    .hero-photo{min-height:520px;border:1px solid var(--line);border-radius:30px;overflow:hidden;position:relative;background:#111;box-shadow:0 25px 80px rgba(0,0,0,.35)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;opacity:.78}
+    .hero-photo:after{content:"MASTER TECH";position:absolute;left:22px;bottom:22px;color:white;font-size:12px;font-weight:900;letter-spacing:.16em;background:rgba(0,0,0,.55);padding:10px 12px;border-radius:9px}
+    .brandline{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.brandline span{border:1px solid var(--line);background:rgba(255,255,255,.025);padding:9px 13px;border-radius:999px;color:#c5cec9;font-size:12px}
+    .gallery{display:grid;grid-template-columns:1.4fr .8fr .8fr;grid-auto-rows:230px;gap:12px}.gallery .g{border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative}.gallery .g:first-child{grid-row:span 2}.gallery img{width:100%;height:100%;object-fit:cover;transition:.3s}.gallery .g:hover img{transform:scale(1.04)}.glabel{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.7);padding:7px 10px;border-radius:8px;font-size:11px;font-weight:800}
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.trust div{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}.trust b{display:block;color:var(--accent);font-size:21px}.trust span{color:var(--muted);font-size:12px}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr}.hero-photo{min-height:340px}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:190px}.gallery .g:first-child{grid-row:span 1}.trust{grid-template-columns:1fr}}
+    @media(max-width:560px){.gallery{grid-template-columns:1fr;grid-auto-rows:230px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="container">
+    <a class="logo" href="#">MASTER <span>TECH</span></a>
+    <div class="navlinks">
+      <a href="#services" data-i18n="nav_services">Услуги</a>
+      <a href="#why" data-i18n="nav_why">Почему мы</a>
+      <a href="#steps" data-i18n="nav_how">Как работаем</a><a href="#works">Работы</a>
+      <a href="#reviews" data-i18n="nav_reviews">Отзывы</a>
+      <a href="#contacts" data-i18n="nav_contacts">Контакты</a>
+    </div>
+    <div class="actions">
+      <div class="lang">
+        <button data-lang="kk">KZ</button><button class="active" data-lang="ru">RU</button><button data-lang="en">EN</button>
+      </div>
+      <a class="call" href="tel:+87086400936">8 708 640 09 36</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">● <span data-i18n="eyebrow">ВЫЕЗД МАСТЕРА ОТ 30 МИНУТ</span></div>
+      <h1 data-i18n="hero_title">Кондиционер и техника.<br><em>Установка. Ремонт. Сервис.</em></h1>
+      <p data-i18n="hero_text">MASTER TECH решает проблемы с кондиционерами, чиллерами и бытовой техникой. Быстро, профессионально и с гарантией 1 год.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary wa" href="https://wa.me/87086400936" target="_blank" data-i18n="order">Заказать мастера в WhatsApp →</a>
+        <a class="btn btn-secondary" href="tel:+87086400936" data-i18n="call">Позвонить</a>
+      </div>
+    </div>
+    <div class="free-box">
+      <div class="tag" data-i18n="free_tag">ГЛАВНОЕ ПРЕИМУЩЕСТВО</div>
+      <h2 data-i18n="free_title">Диагностика<br>БЕСПЛАТНО</h2>
+      <p data-i18n="free_text">Мастер приедет к вам, бесплатно осмотрит и проверит технику, определит проблему и объяснит, что нужно сделать.</p>
+      <div class="mini">
+        <div><b>15+</b><span data-i18n="exp">лет опыта</span></div>
+        <div><b>1 год</b><span data-i18n="guarantee">гарантия</span></div>
+        <div><b>30 мин</b><span data-i18n="arrival">выезд</span></div>
+        <div><b>0 ₸</b><span data-i18n="diagnostic">диагностика</span></div>
+      </div>
+    </div>
+    <div class="hero-photo"><img src="work-6.jpeg" alt="Промышленное климатическое оборудование MASTER TECH"></div>
+  </div>
+  <div class="container trust"><div><b>Бесплатный выезд</b><span>Мастер приезжает и проверяет оборудование</span></div><div><b>15+ лет</b><span>Практический опыт мастеров</span></div><div><b>1 год</b><span>Гарантия на выполненные работы</span></div></div>
+</section>
+
+<div class="container stats" id="why">
+  <div class="stat"><b>15+</b><span data-i18n="stat1">лет опыта мастеров</span></div>
+  <div class="stat"><b>30 мин</b><span data-i18n="stat2">выезд мастера</span></div>
+  <div class="stat"><b>0 ₸</b><span data-i18n="stat3">бесплатная диагностика</span></div>
+  <div class="stat"><b>1 год</b><span data-i18n="stat4">гарантия на работу</span></div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="services_title">Что мы<br>делаем</h2>
+      <p data-i18n="services_sub">От установки кондиционера до ремонта котла и бытовой техники. Один мастерский сервис — разные задачи.</p>
+    </div>
+    <div class="services" id="serviceGrid"></div>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="steps_title">Как это<br>работает</h2>
+      <p data-i18n="steps_sub">Просто: вы обращаетесь — мы приезжаем, бесплатно проверяем технику и предлагаем решение.</p>
+    </div>
+    <div class="steps" id="stepsGrid"></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="problems_title">Не знаете,<br>что случилось?</h2>
+      <p data-i18n="problems_sub">Опишите симптом мастеру в WhatsApp. Диагностика поможет точно определить причину.</p>
+    </div>
+    <div class="problems">
+      <div class="problem"><h3 data-i18n="p1_title">Кондиционер</h3><ul><li data-i18n="p1_1">Не охлаждает</li><li data-i18n="p1_2">Течёт вода</li><li data-i18n="p1_3">Шумит или не включается</li><li data-i18n="p1_4">Нужна чистка или заправка</li></ul></div>
+      <div class="problem"><h3 data-i18n="p2_title">Бытовая техника</h3><ul><li data-i18n="p2_1">Не включается</li><li data-i18n="p2_2">Не нагревает</li><li data-i18n="p2_3">Появилась ошибка или запах</li><li data-i18n="p2_4">Работает нестабильно</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="works"><div class="container"><div class="section-head"><h2>РЕАЛЬНЫЕ<br>РАБОТЫ</h2><p>Фотографии с объектов: кондиционеры, электроника и промышленное климатическое оборудование. Ваши реальные работы — в центре сайта.</p></div><div class="gallery"><div class="g"><img src="work-1.jpeg" alt="Работа MASTER TECH"><div class="glabel">Кондиционеры</div></div><div class="g"><img src="work-2.jpeg" alt="Диагностика"><div class="glabel">Диагностика</div></div><div class="g"><img src="work-3.jpeg" alt="Оборудование"><div class="glabel">Сервис</div></div><div class="g"><img src="work-4.jpeg" alt="Ремонт электроники"><div class="glabel">Ремонт</div></div><div class="g"><img src="work-5.jpeg" alt="Daikin"><div class="glabel">Daikin</div></div></div><div class="brandline"><span>Климатические системы</span><span>Промышленное оборудование</span><span>Бытовая техника</span><span>Сервис и ремонт</span></div></div></section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="reviews_title">Отзывы<br>клиентов</h2>
+      <p data-i18n="reviews_sub">Оставьте свой отзыв после работы мастера.</p>
+    </div>
+    <div class="review-wrap">
+      <form class="review-form" id="reviewForm">
+        <h3 data-i18n="review_form_title">Ваш отзыв</h3>
+        <input id="reviewName" required placeholder="Ваше имя">
+        <textarea id="reviewText" required placeholder="Напишите отзыв..."></textarea>
+        <button class="btn btn-primary" type="submit" data-i18n="review_btn">Оставить отзыв</button>
+        <p style="color:var(--muted);font-size:11px;margin-top:10px" data-i18n="review_note">Новые отзывы сохраняются на этом устройстве.</p>
+      </form>
+      <div class="reviews" id="reviewsList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <div class="cta">
+      <div><h2 data-i18n="cta_title">Нужен мастер?</h2><p data-i18n="cta_text">Бесплатно приедем, проверим технику и объясним, что делать.</p></div>
+      <div class="hero-buttons">
+        <a class="btn wa" href="https://wa.me/87086400936" target="_blank" data-i18n="cta_wa">WhatsApp →</a>
+        <a class="btn" href="tel:+87086400936" data-i18n="cta_call">Позвонить</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div><strong class="logo">MASTER <span>TECH</span></strong><br><span data-i18n="footer_tag">Сервис, которому доверяют технику.</span></div>
+    <div>8 708 640 09 36<br><span data-i18n="address">Мкр Алғабас, Омарова 19</span></div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="wa" href="https://wa.me/87086400936" target="_blank">WhatsApp</a>
+  <a href="tel:+87086400936" data-i18n="call">Позвонить</a>
+</div>
+
+<script>
+const WA="https://wa.me/87086400936";
+const dict={
+ru:{
+nav_services:"Услуги",nav_why:"Почему мы",nav_how:"Как работаем",nav_reviews:"Отзывы",nav_contacts:"Контакты",
+eyebrow:"ВЫЕЗД МАСТЕРА ОТ 30 МИНУТ",hero_title:"Кондиционер и техника.<br><em>Установка. Ремонт. Сервис.</em>",
+hero_text:"MASTER TECH решает проблемы с кондиционерами, чиллерами и бытовой техникой. Быстро, профессионально и с гарантией 1 год.",
+order:"Заказать мастера в WhatsApp →",call:"Позвонить",free_tag:"ГЛАВНОЕ ПРЕИМУЩЕСТВО",free_title:"Диагностика<br>БЕСПЛАТНО",
+free_text:"Мастер приедет к вам, бесплатно осмотрит и проверит технику, определит проблему и объяснит, что нужно сделать.",exp:"лет опыта",guarantee:"гарантия",arrival:"выезд",diagnostic:"диагностика",
+stat1:"лет опыта мастеров",stat2:"выезд мастера",stat3:"бесплатная диагностика",stat4:"гарантия на работу",
+services_title:"Что мы<br>делаем",services_sub:"От установки кондиционера до ремонта котла и бытовой техники. Один мастерский сервис — разные задачи.",
+steps_title:"Как это<br>работает",steps_sub:"Просто: вы обращаетесь — мы приезжаем, бесплатно проверяем технику и предлагаем решение.",
+problems_title:"Не знаете,<br>что случилось?",problems_sub:"Опишите симптом мастеру в WhatsApp. Диагностика поможет точно определить причину.",
+p1_title:"Кондиционер",p1_1:"Не охлаждает",p1_2:"Течёт вода",p1_3:"Шумит или не включается",p1_4:"Нужна чистка или заправка",
+p2_title:"Бытовая техника",p2_1:"Не включается",p2_2:"Не нагревает",p2_3:"Появилась ошибка или запах",p2_4:"Работает нестабильно",
+reviews_title:"Отзывы<br>клиентов",reviews_sub:"Оставьте свой отзыв после работы мастера.",review_form_title:"Ваш отзыв",review_btn:"Оставить отзыв",review_note:"Новые отзывы сохраняются на этом устройстве.",
+cta_title:"Нужен мастер?",cta_text:"Бесплатно приедем, проверим технику и объясним, что делать.",cta_wa:"WhatsApp →",cta_call:"Позвонить",footer_tag:"Сервис, которому доверяют технику.",address:"Мкр Алғабас, Омарова 19",
+services:[
+["❄️","Установка кондиционеров","Монтаж сплит-систем и подготовка к работе."],["🔧","Ремонт кондиционеров","Диагностика и устранение неисправностей."],["🧊","Ремонт чиллеров","Сервис и ремонт климатического оборудования."],["💨","Заправка кондиционеров","Проверка системы и заправка хладагентом."],["🧼","Чистка кондиционеров","Глубокая чистка внутреннего и внешнего блока."],["🔥","Ремонт газовых котлов","Поиск неисправности и ремонт отопительного оборудования."],["🍳","Ремонт духовок","Ремонт электрических и встраиваемых духовок."],["⚡","Ремонт электроплит","Диагностика и ремонт электрических плит."],["🚿","Ремонт бойлеров","Ремонт и обслуживание водонагревателей."]],
+steps:[["01","Оставляете заявку","Пишите в WhatsApp или звоните нам."],["02","Мастер приезжает","Приедем к вам в течение 30 минут."],["03","Бесплатно проверяем","Мастер бесплатно осмотрит и проверит технику."],["04","Объясняем решение","Определим проблему и расскажем стоимость ремонта."],["05","Выполняем работу","После согласования ремонтируем и даём гарантию 1 год."]]
+},
+kk:{
+nav_services:"Қызметтер",nav_why:"Неліктен біз",nav_how:"Қалай жұмыс істейміз",nav_reviews:"Пікірлер",nav_contacts:"Байланыс",
+eyebrow:"МАСТЕРДІҢ КЕЛУІ 30 МИНУТТАН БАСТАП",hero_title:"Кондиционер және техника.<br><em>Орнату. Жөндеу. Сервис.</em>",
+hero_text:"MASTER TECH кондиционер, чиллер және тұрмыстық техниканың мәселесін шешеді. Жылдам, кәсіби және 1 жыл кепілдікпен.",
+order:"WhatsApp арқылы мастер шақыру →",call:"Қоңырау шалу",free_tag:"БАСТЫ АРТЫҚШЫЛЫҒЫМЫЗ",free_title:"Диагностика<br>ТЕГІН",
+free_text:"Мастер сізге келіп, техниканы тегін қарап, тексеріп, ақауын анықтап, не істеу керегін түсіндіреді.",exp:"жыл тәжірибе",guarantee:"кепілдік",arrival:"келу",diagnostic:"диагностика",
+stat1:"жыл тәжірибе",stat2:"мастердің келуі",stat3:"тегін диагностика",stat4:"жұмысқа кепілдік",
+services_title:"Біз не<br>жасаймыз",services_sub:"Кондиционер орнатудан қазандық пен тұрмыстық техниканы жөндеуге дейін. Бір сервис — көптеген қызмет.",
+steps_title:"Қалай<br>жұмыс істейміз",steps_sub:"Сіз хабарласасыз — біз келеміз, техниканы тегін тексеріп, шешім ұсынамыз.",
+problems_title:"Не болғанын<br>білмей тұрсыз ба?",problems_sub:"WhatsApp-та мәселені жазыңыз. Диагностика нақты себебін анықтауға көмектеседі.",
+p1_title:"Кондиционер",p1_1:"Салқындатпайды",p1_2:"Су ағады",p1_3:"Шуылдайды немесе қосылмайды",p1_4:"Тазалау немесе заправка қажет",
+p2_title:"Тұрмыстық техника",p2_1:"Қосылмайды",p2_2:"Қыздырмайды",p2_3:"Қате немесе иіс пайда болды",p2_4:"Тұрақсыз жұмыс істейді",
+reviews_title:"Клиенттердің<br>пікірлері",reviews_sub:"Мастер жұмысынан кейін өз пікіріңізді қалдырыңыз.",review_form_title:"Пікіріңіз",review_btn:"Пікір қалдыру",review_note:"Жаңа пікірлер осы құрылғыда сақталады.",
+cta_title:"Мастер керек пе?",cta_text:"Тегін келіп, техниканы тексеріп, не істеу керегін түсіндіреміз.",cta_wa:"WhatsApp →",cta_call:"Қоңырау шалу",footer_tag:"Техникаңызды сеніп тапсыратын сервис.",address:"Алғабас ықшам ауданы, Омарова 19",
+services:[
+["❄️","Кондиционер орнату","Сплит-жүйелерді орнату және іске дайындау."],["🔧","Кондиционер жөндеу","Диагностика және ақауларды жою."],["🧊","Чиллер жөндеу","Климаттық жабдыққа сервис және жөндеу."],["💨","Кондиционер заправкасы","Жүйені тексеру және хладагентпен толтыру."],["🧼","Кондиционер тазалау","Ішкі және сыртқы блоктарды терең тазалау."],["🔥","Газ қазандығын жөндеу","Жылыту жабдығын тексеру және жөндеу."],["🍳","Духовка жөндеу","Электр және кіріктірілген духовкаларды жөндеу."],["⚡","Электр плитасын жөндеу","Диагностика және электр плиталарын жөндеу."],["🚿","Бойлер жөндеу","Су жылытқыштарды жөндеу және қызмет көрсету."]],
+steps:[["01","Өтінім қалдырасыз","WhatsApp-қа жазыңыз немесе қоңырау шалыңыз."],["02","Мастер келеді","30 минут ішінде келуге тырысамыз."],["03","Тегін тексереміз","Мастер техниканы тегін қарап, тексереді."],["04","Шешімді түсіндіреміз","Мәселені анықтап, жөндеу құнын айтамыз."],["05","Жұмысты орындаймыз","Келісімнен кейін жөндеп, 1 жыл кепілдік береміз."]]
+},
+en:{
+nav_services:"Services",nav_why:"Why us",nav_how:"How it works",nav_reviews:"Reviews",nav_contacts:"Contacts",
+eyebrow:"MASTER ARRIVAL FROM 30 MINUTES",hero_title:"Air conditioning & appliances.<br><em>Install. Repair. Service.</em>",
+hero_text:"MASTER TECH solves problems with air conditioners, chillers and home appliances. Fast, professional service with a 1-year warranty.",
+order:"Book a master on WhatsApp →",call:"Call us",free_tag:"OUR MAIN ADVANTAGE",free_title:"Diagnostics<br>FREE",
+free_text:"A master comes to you, checks the equipment for free, identifies the problem and explains what needs to be done.",exp:"years experience",guarantee:"warranty",arrival:"arrival",diagnostic:"diagnostics",
+stat1:"years of experience",stat2:"master arrival",stat3:"free diagnostics",stat4:"work warranty",
+services_title:"What we<br>do",services_sub:"From air conditioner installation to boiler and appliance repair. One professional service for many tasks.",
+steps_title:"How it<br>works",steps_sub:"Simple: contact us — we come, check your equipment for free and offer a solution.",
+problems_title:"Not sure<br>what's wrong?",problems_sub:"Describe the problem on WhatsApp. Diagnostics will help identify the exact cause.",
+p1_title:"Air conditioner",p1_1:"Not cooling",p1_2:"Leaking water",p1_3:"Noisy or won't turn on",p1_4:"Needs cleaning or refrigerant",
+p2_title:"Home appliances",p2_1:"Won't turn on",p2_2:"Not heating",p2_3:"Error or unusual smell",p2_4:"Works intermittently",
+reviews_title:"Customer<br>reviews",reviews_sub:"Leave your review after the master completes the work.",review_form_title:"Your review",review_btn:"Leave a review",review_note:"New reviews are saved on this device.",
+cta_title:"Need a master?",cta_text:"We come for free, check your equipment and explain the solution.",cta_wa:"WhatsApp →",cta_call:"Call us",footer_tag:"A service you can trust with your equipment.",address:"Algabas microdistrict, Omarova 19",
+services:[
+["❄️","Air conditioner installation","Split-system installation and commissioning."],["🔧","Air conditioner repair","Diagnostics and troubleshooting."],["🧊","Chiller repair","Service and repair of climate equipment."],["💨","Air conditioner recharge","System check and refrigerant recharge."],["🧼","Air conditioner cleaning","Deep cleaning of indoor and outdoor units."],["🔥","Gas boiler repair","Diagnostics and repair of heating equipment."],["🍳","Oven repair","Repair of electric and built-in ovens."],["⚡","Electric stove repair","Diagnostics and repair of electric stoves."],["🚿","Boiler repair","Repair and maintenance of water heaters."]],
+steps:[["01","Contact us","Write on WhatsApp or call us."],["02","Master arrives","We aim to arrive within 30 minutes."],["03","Free check","The master inspects and checks your equipment for free."],["04","We explain the solution","We identify the problem and explain the repair cost."],["05","We do the work","After approval, we repair it and provide a 1-year warranty."]]
+}};
+let lang=localStorage.getItem("mt_lang")||"ru";
+function render(){
+ const d=dict[lang];
+ document.documentElement.lang=lang;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{let k=el.dataset.i18n;if(d[k]!==undefined)el.innerHTML=d[k]});
+ document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+ document.getElementById("serviceGrid").innerHTML=d.services.map(s=>`<article class="service"><div><div class="icon">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div><a class="wa" href="${WA}" target="_blank">${lang==="kk"?"Мастер шақыру →":lang==="en"?"Book a master →":"Заказать мастера →"}</a></article>`).join("");
+ document.getElementById("stepsGrid").innerHTML=d.steps.map(s=>`<article class="step"><div class="num">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join("");
+ document.querySelectorAll(".wa").forEach(a=>a.href=WA);
+ document.getElementById("reviewName").placeholder=lang==="kk"?"Атыңыз":lang==="en"?"Your name":"Ваше имя";
+ document.getElementById("reviewText").placeholder=lang==="kk"?"Пікіріңізді жазыңыз...":lang==="en"?"Write your review...":"Напишите отзыв...";
+ renderReviews();
+}
+function renderReviews(){
+ const list=document.getElementById("reviewsList");
+ const reviews=JSON.parse(localStorage.getItem("mt_reviews")||"[]");
+ const d=dict[lang];
+ if(!reviews.length){list.innerHTML=`<div class="review"><div class="stars">★★★★★</div><h3>${lang==="kk"?"Алғашқы пікірді сіз қалдырыңыз":lang==="en"?"Be the first to leave a review":"Оставьте первый отзыв"}</h3><small>${d.review_note}</small></div>`;return}
+ list.innerHTML=reviews.slice().reverse().map(r=>`<div class="review"><div class="stars">★★★★★</div><strong>${escapeHtml(r.name)}</strong><p>${escapeHtml(r.text)}</p><small>${new Date(r.date).toLocaleDateString()}</small></div>`).join("");
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.lang;localStorage.setItem("mt_lang",lang);render()}));
+document.getElementById("reviewForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=document.getElementById("reviewName").value.trim(),text=document.getElementById("reviewText").value.trim();
+ if(!name||!text)return;
+ const reviews=JSON.parse(localStorage.getItem("mt_reviews")||"[]");
+ reviews.push({name,text,date:new Date().toISOString()});
+ localStorage.setItem("mt_reviews",JSON.stringify(reviews));
+ e.target.reset();renderReviews();
+});
+render();
+</script>
+</body>
+</html>
